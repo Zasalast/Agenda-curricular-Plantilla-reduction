@@ -1,26 +1,50 @@
 import React, { Component } from 'react';
-class SingleActividad extends Component {
-     mostrarPost = (props) => {
-          if(!props.activity) return null;
-          const {fecha,idActividad } = this.props.activity;
+import PropTypes from 'utils/propTypes';
 
+
+import { Card, CardImg, CardImgOverlay, CardTitle, CardText, CardBody, CardDeck, Progress } from 'reactstrap';
+
+import Todos, { propTypes as TodosPropTypes } from 'components/Todos';
+
+import Typography from '../Typography';
+class SingleActividad extends Component {
+     mostrarActivity = (props) => {
+          if (!props.activity) return null;
+          const { date, description, hour, id, manager, priority, state, curriculumactivity } = this.props.activity;
           return (
-               <React.Fragment>
-                    <h1>{fecha}</h1>
-                    . d.
-               </React.Fragment>
+               <div className="cr-content">
+                    <Card  >
+                         <h1>Actividad Curricular</h1>
+                         <div className="position-relative">
+                              <CardImgOverlay   >
+                                   <p>  {id}</p>
+                                   <CardTitle  > <h2> {curriculumactivity}</h2>
+                                   </CardTitle>
+                                   <CardText  >{description} </CardText>
+
+                                   < CardText  >{date}</CardText>
+
+                                   <CardText  > {manager}</CardText >
+                                   <CardText  > {priority}</CardText>
+                                   <CardText  >  {hour}</CardText>
+                                   <CardText  >   {state}</CardText>
+
+                              </CardImgOverlay>
+                         </div>
+
+                    </Card>
+               </div>
+
           )
      }
 
-     render() { 
-
-          return ( 
-               <div className="col-12 col-md-8">
-                 { this.props.activity.map(person => <li>{person.fecha}</li>)}
-           {console.log("ssssssssssssss")}
+     render() {
+          return (
+               <div>
+                    {this.mostrarActivity(this.props)}
                </div>
           );
      }
 }
- 
+
 export default SingleActividad;

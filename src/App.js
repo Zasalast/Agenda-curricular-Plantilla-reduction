@@ -172,30 +172,23 @@ class App extends React.Component {
                 }}
                 />
 
-
-                <Route exact path="/actividad/:actividadId" render={(state) => {
-                  let idActividad = state.location.pathname.replace('/actividad/', '');
-
-                  const activity = this.state.activity;
-
+                <Route exact path="/actividad/:actividadId" render={(props) => {
+                    let idActividad = props.location.pathname.replace('/actividad/', '');
+                    const activities = this.state.activity;
                   let filtro;
-                  filtro = this.state.activity.filter = (activi => (
-                    activi.id === Number(idActividad)
+                  filtro = activities.filter(activi => (
+                    activi.id ==idActividad
                   ))
                   return (
-                    <SingleActividad
-                    activity={this.state.activity[0]}
-                      activi={filtro[0]}
-                    />
+                   <SingleActividad
+                   id={idActividad}
+                   activity={filtro[0]}
+                    /> 
                   )
                 }
-
                 }
                 />
-
-
-
-
+                
                 <Route exact path="/badges" component={BadgePage} />
                 <Route
                   exact
