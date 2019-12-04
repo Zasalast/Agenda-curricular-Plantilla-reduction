@@ -8,9 +8,20 @@ import Todos, { propTypes as TodosPropTypes } from 'components/Todos';
 
 import Typography from '../Typography';
 class SingleActividad extends Component {
-     mostrarActivity = (props) => {
-          if (!props.activity) return null;
-          const { date, description, hour, id, manager, priority, state, curriculumactivity } = this.props.activity;
+     
+state={
+     activity:null
+}
+
+
+     componentDidMount(){
+          const{data} = this.props.location.state;
+          this.setState({activity: data}, () => console.log(this.state.activity))
+     
+     }
+     
+     mostrarActivity = () => {
+          const { date, description, hour, id, manager, priority, state, curriculumactivity } = this.state.activity;
           return (
                <div className="cr-content">
                     <Card  >
@@ -32,7 +43,7 @@ class SingleActividad extends Component {
                               </CardImgOverlay>
                          </div>
 
-                    </Card>
+                    </Card> 
                </div>
 
           )
@@ -41,7 +52,8 @@ class SingleActividad extends Component {
      render() {
           return (
                <div>
-                    {this.mostrarActivity(this.props)}
+                    { this.state.activity && this.mostrarActivity(this.props)} 
+                    hola
                </div>
           );
      }

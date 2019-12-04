@@ -20,8 +20,8 @@ export default class AgregarActividad extends Component {
             manager = this.nombremanagerActividadRef.current.value,
             hour = this.hourActividadRef.current.value,
             date = this.dateActividadRef.current.value,
-            description = this.descriptionActividadRef.current.value;
-        priority = this.priorityActividadRef.current.value;
+            description = this.descriptionActividadRef.current.value,
+        priority = this.priorityActividadRef.current.value,
         state = this.stateActividadRef.current.value;
 
         if (curriculumactivity === '' || manager === '' || hour === '' || date === '' || description === '') {
@@ -38,7 +38,7 @@ export default class AgregarActividad extends Component {
                 state: false
             }
 
-            axios.actividad(`http://localhost:3001/actividad`, { nuevaActividad })
+            axios.actividad(`http://localhost:3001/activity`, { nuevaActividad })
                 .then(res => {
                     if (res.status === 201) {
                         toast(

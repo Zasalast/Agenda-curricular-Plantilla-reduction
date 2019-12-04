@@ -35,7 +35,7 @@ constructor(props){
     console.log(index);
   }
   handleClick = (e) =>{
-    axios.delete(`http://localhost:3000/actividad/${e}`)
+    axios.delete(`http://localhost:3000/activity/${e}`)
     .then(res=>{
          if(res.status === 200) {
               const activity = [...this.props.activity];
@@ -49,6 +49,25 @@ constructor(props){
          }
     })
   }
+
+  deleteactivity = (id) => {
+    axios.delete(`http://localhost:3000/activity/${id}`)
+         .then(res=>{
+              if(res.status === 200) {
+                   const activity = [...this.state.activity];
+                   
+                   let resultado = activity.filter(actividad => (
+                    actividad.id != id
+                   ));
+                   this.setState({
+                    activity: resultado
+                   })
+              }
+         })
+}
+
+
+
   renderHeaderTable() {
     return (
       <tr>
@@ -89,6 +108,7 @@ constructor(props){
                     {this.renderHeaderTable()}
 
                     {this.props.activity.map((activity, index) => {
+                       console.log(this.props.activity)
                         const {curriculumactivity,manager, date,hour, priority, state,id } = activity;
                         return (
                           <tr className="actividad" key={index} >
@@ -99,7 +119,7 @@ constructor(props){
                             <td>{priority} {/* {activi.hora} */}</td>
                             <td>{state} {/* {activi.hora} */}</td>
                             <td>
-                              <Link to={`/actividad/${index}`}  className="btn btn-primary">
+                              <Link to={{pathname:'/activity',state:{data: activity}}}  className="btn btn-primary">
                                 VER
                             </Link>
                             </td>
@@ -108,7 +128,7 @@ constructor(props){
                                 Editar
                                   </button> </td>
                             <td>
-                              <button  onClick={(e) => this.handleClick(e)}   className="btn btn-danger">
+                              <button   onClick={() => this.deleteactivity(index)}    className="btn btn-danger">
                                 ELIMINAR
                                   </button> </td>
                             <td>  <button  class="btn btn-outline-danger">
