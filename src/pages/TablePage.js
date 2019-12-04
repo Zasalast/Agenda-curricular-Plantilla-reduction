@@ -50,9 +50,13 @@ constructor(props){
     })
   }
 
+
+
+  
   deleteactivity = (id) => {
     axios.delete(`http://localhost:3000/activity/${id}`)
          .then(res=>{
+           console.log(res.status)
               if(res.status === 200) {
                    const activity = [...this.state.activity];
                    
@@ -109,7 +113,7 @@ constructor(props){
 
                     {this.props.activity.map((activity, index) => {
                        console.log(this.props.activity)
-                        const {curriculumactivity,manager, date,hour, priority, state,id } = activity;
+                        const {curriculumactivity,manager, date,hour, priority, state, id } = activity;
                         return (
                           <tr className="actividad" key={index} >
                             <td>{curriculumactivity} {/* {activi.actividadcurricular} */}</td>
@@ -128,7 +132,7 @@ constructor(props){
                                 Editar
                                   </button> </td>
                             <td>
-                              <button   onClick={() => this.deleteactivity(index)}    className="btn btn-danger">
+                              <button   onClick={() => this.deleteactivity(id)}    className="btn btn-danger">
                                 ELIMINAR
                                   </button> </td>
                             <td>  <button  class="btn btn-outline-danger">

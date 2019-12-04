@@ -51,80 +51,21 @@ class App extends React.Component {
     this.getDataAgenda()
   }
   /* 
-    state = { 
-      actividades: []
-  }
-  componentDidMount() {
-       this.obtenerActividad();
-  }
-  
-  obtenerActividad = () => {
-      axios.get(`http://localhost:3001/actividad`)
-           .then(res => {
-                this.setState({
-                     actividades: res.data
-                })
-           })
-  }
-  
-  borrarActividad = (id) => {
-      axios.delete(`http://localhost:3001/actividad/${id}`)
-           .then(res=>{
-                if(res.status === 200) {
-                     const actividades = [...this.state.actividades];
-                     
-                     let resultado = actividades.filter(actividad => (
-                      actividad.id != id
-                     ));
-                     this.setState({
-                      actividades: resultado
-                     })
-                }
-           })
-  }
-  
-  crearActividad = (actividad) => {
-     axios.actividad(`http://localhost:3001/actividad`, {actividad})
-            .then(res => {
-                if(res.status === 201) {
-                    swal(
-                        'Actividad Creado',
-                        'Se creo correctamente',
-                        'success'
-                    )
-                    let actividadId = {id: res.data.id};
-                   const nuevoActividad = Object.assign({}, res.data.actividad, actividadId);
-  
-                   this.setState(prevState => ({
-                      actividades: [...prevState.actividades, nuevoActividad]
-                   }))
-                }
-            })
-  }
-  
   editarActividad = (actividadActualizado) => {
     //  console.log(actividadActualizado);
-  
      const {id} = actividadActualizado;
-  
      axios.put(`http://localhost:3001/actividad/${id}`, {actividadActualizado})
         .then(res => {
             if(res.status === 200) {
-  
                 swal(
                     'actividad Actualizado',
                     'Se guardó correctamente',
                     'success'
                 )
-  
                 let actividadId = res.data.id;
-  
                 const actividades = [...this.state.actividades];
-  
                 const actividadEditar = actividades.findIndex(actividad => actividadId === actividad.id );
-  
                 actividades[actividadEditar] = actividadActualizado;
-  
                 this.setState({
                   actividades
                 })
@@ -163,7 +104,6 @@ class App extends React.Component {
                 {/*    <Route exact path="/widgets" component={WidgetPage} /> */}
                 <Route exact path="/typography" component={TypographyPage} />
                 <Route exact path="/alerts" component={AlertPage} />
-                {/*  <Route exact path="/tables" component={TablePage} /> */}
                 <Route exact path="/tables" render={() => {
                   return (
                     <TablePage activity={this.state.activity}
@@ -171,27 +111,6 @@ class App extends React.Component {
                   )
                 }}
                 />
-
-               {/*  <Route exact path="/actividad/:actividadId" render={(props) => {
-                    let idActividad = props.location.pathname.replace('/actividad/', '');
-                    const activities = this.state.activity;
-                    console.log(idActividad)
-                    console.log(activities)
-                  let filtro;
-                  filtro = activities.filter(activi => (
-                    activi.id ==idActividad
-                  ))
-                  console.log(filtro[0])
-                  return (
-                   <SingleActividad
-                   id={idActividad}
-                   activity={filtro[0]}
-                    /> 
-                  )
-                }
-                }
-                /> */}
-                
                 <Route exact path="/badges" component={BadgePage} />
                 <Route exact path="/activity" component={SingleActividad} />
                 <Route

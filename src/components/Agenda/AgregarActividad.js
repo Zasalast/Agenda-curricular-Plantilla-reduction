@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Page from 'components/Page';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
+/* import { ToastContainer, toast } from 'react-toastify';
+import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap'; */
 /* import PropTypes from 'prop-types'; */
 export default class AgregarActividad extends Component {
-    state = {
+    /* state = {
         error: false
-    }
+    } */
     curriculumactivityRef = React.createRef();
     managerActividadRef = React.createRef();
     hourActividadRef = React.createRef();
@@ -38,31 +38,34 @@ export default class AgregarActividad extends Component {
                 state: false
             }
 
-            axios.actividad(`http://localhost:3001/activity`, { nuevaActividad })
-                .then(res => {
-                    if (res.status === 201) {
-                        toast(
-                            'Actividad Creado',
-                            'Se creo correctamente',
-                            'success'
-                        )
-                        let actividadId = { id: res.data.id };
-                        const nuevoActividad = Object.assign({}, res.data.actividad, actividadId);
-
-                        this.setState(prevState => ({
-                            activity: [...prevState.activity, nuevoActividad]
-                        }))
-                    }
-                })
+            
+                axios.actividad(`http://localhost:3000/activity`, {nuevaActividad})
+                       .then(res => {
+                           console.log(res.status)
+                           /* if(res.status === 201) {
+                            toast(
+                                   'Actividad Creado',
+                                   'Se creo correctamente',
+                                   'success'
+                               ) */
+                             /*   let actividadId = {id: res.data.id};
+                              const nuevoActividad = Object.assign({}, res.data.nuevaActividad, actividadId);
+             
+                              this.setState(prevState => ({
+                                activity: [...prevState.activity, nuevoActividad]
+                              })) */
+                         /*   } */
+                       })
+             
         }
     }
     render() {
-        const existeError = this.state.error;
+        /* const existeError = this.state.error; */
         return (
             <Page
-                title="Actividad"
-                breadcrumbs={[{ name: 'Agregar Actividad', active: true }]}
-                className="TablePage"
+            /*     title="Actividad"
+                breadcrumbs={[{ name: 'Agregar Actividad', active: false }]}
+                className="TablePage" */
             >
                 <form onSubmit={this.crearNewActividad}>
 
@@ -114,7 +117,7 @@ export default class AgregarActividad extends Component {
                         <label className="col-sm-4 col-lg-2 col-form-label">Estado</label>
                         <div className="col-sm-8 col-lg-10">
                             <select className="form-control">
-                                <option ref={this.stateActividadRef} defaultValue="true">Selecione Estado</option>
+                                <option ref={this.stateActividadRef} defaultValue="pendiente">Selecione Estado</option>
                                 <option ref={this.stateActividadRef} value="proceso">En proceso</option>
                                 <option ref={this.stateActividadRef} value="terminada">Terminada</option>
                                 <option ref={this.stateActividadRef} value="pendiente">Pendiente</option>
@@ -136,9 +139,9 @@ export default class AgregarActividad extends Component {
                     </div>
 
                 </form>
-                {existeError ? <div className='alert alert-danger text-center'>
+              {/*   {existeError ? <div className='alert alert-danger text-center'>
                     Todos los campos son necesarios
-                </div> : ''}
+                </div> : ''} */}
             </Page>
         );
     }
