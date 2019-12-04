@@ -7,7 +7,7 @@ import React from 'react';
 import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
-import AgregarActividad from './components/Agenda/AgregarActividad';
+import AddActivity from './components/Agenda/AddActivity';
 /* import ActividadPrioridadAlta from 'components/Agenda/ActividadPrioridadAlta'; */
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -121,7 +121,7 @@ class App extends React.Component {
                 {/*    <Route exact path="/dropdowns" component={DropdownPage} /> */}
                 {/* <Route exact path="/progress" component={ProgressPage} /> */}
                 <Route exact path="/modals" component={ModalPage} />
-                <Route exact path="/agregaractividad" component={AgregarActividad} />
+                <Route exact path="/agregaractividad" component={AddActivity} />
                 <Route exact path="/forms" component={FormPage} />
                 <Route exact path="/input-groups" component={InputGroupPage} />
                 {/*  <Route exact path="/charts" component={ChartPage} /> */}
