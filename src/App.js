@@ -12,6 +12,7 @@ import AddActivity from './components/Agenda/AddActivity';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import SingleActividad from './components/Agenda/SingleActividad';
+import EditActivity from './components/Agenda/EditActivity';
 /* import swal from 'sweetalert2'; */
 const AlertPage = React.lazy(() => import('pages/AlertPage'));
 const AuthModalPage = React.lazy(() => import('pages/AuthModalPage'));
@@ -122,6 +123,8 @@ class App extends React.Component {
                 {/* <Route exact path="/progress" component={ProgressPage} /> */}
                 <Route exact path="/modals" component={ModalPage} />
                 <Route exact path="/agregaractividad" component={AddActivity} />
+
+                <Route exact path="/editactividad" component={EditActivity} />
                 <Route exact path="/forms" component={FormPage} />
                 <Route exact path="/input-groups" component={InputGroupPage} />
                 {/*  <Route exact path="/charts" component={ChartPage} /> */}

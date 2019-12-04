@@ -128,9 +128,9 @@ constructor(props){
                             </Link>
                             </td>
                             <td>
-                              <button /* onClick={this.editarActividad} */ class="btn btn-warning"  >
+                              <Link to={{pathname:'/editactivity',state:{data: activity}}} class="btn btn-warning"  >
                                 Editar
-                                  </button> </td>
+                                  </Link> </td>
                             <td>
                               <button   onClick={() => this.deleteactivity(id)}    className="btn btn-danger">
                                 ELIMINAR
