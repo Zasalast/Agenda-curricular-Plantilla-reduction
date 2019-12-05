@@ -18,7 +18,7 @@ class EditActivity extends Component {
           // activity: null,
           curriculumactivity: '',
           manager: '',
-          hour: '',
+          hour: null,
           date: '',
           description: '',
           prioritySelected: null,
@@ -28,32 +28,7 @@ class EditActivity extends Component {
 
      componentDidMount() {
           const { data } = this.props.location.state;
-          console.log(data);
-const{ curriculumactivity,
-     manager,
-     hour,
-     date,
-     description,
-     priority,
-     state}=data;
-
-
-// curriculumactivity: data.curriculumactivity,
-//                manager: data.manager,
-//                hour: data.hour,
-//                date: data.date,
-//                description: data.description,
-//                prioritySelected: data.priority,
-//                stateSelected: data.state, 
-          this.setState({    
-               curriculumactivity,
-               manager,
-               hour,
-               date,
-               description,
-               prioritySelected:priority,
-               stateSelected:state,
-          })
+          this.setState({ activity: data }, () => console.log(this.state.activity))
 
      }
   
@@ -63,21 +38,20 @@ const{ curriculumactivity,
           if (date.trim() === '' || description.trim() === '' || hour.trim() === '' || manager.trim() === '' || priority === null || state === null || curriculumactivity.trim() === '') {
                toast.error("Todos los campos son necesarios")
           } else {
-               const activityUpdate = {
-                    id:"6",
+               const UpdateActivity = {
                     curriculumactivity: "Muerte metodos",
-                    manager: "Adios elio",
+                    manager: "Eliosss",
                     hour: "4:30",
                     date: "2012-03-04",
                     description: "Actualizando",
                     priority: "Altaa",
-                    state: "1",
+                    state: "1"
                }
-               console.log("activityUpdate"); console.log(activityUpdate);
+               console.log("activityUpdate"); console.log(UpdateActivity);
                // enviar por props o petición de axios
               console.log("id"); console.log(this.state.activity.id);
-               // const {id} = activityUpdate;
-               axios.put(`http://localhost:3000/activity`, activityUpdate)
+               // const {id} = UpdateActivity;
+               axios.put(`http://localhost:3000/activity/${this.state.activity.id}`, {UpdateActivity})
                   .then(res => {
                       if(res.status === 200) {
                            console.log(res.data);
@@ -86,13 +60,13 @@ const{ curriculumactivity,
                               'Se guardó correctamente',
                               'success'
                           )
-                          let activityId = res.data.id;
-                          const activity = [...this.state.activity];
-                          const activityEdit = activity.findIndex(actividad => activityId === actividad.id );
-                          activity[activityEdit] = activityUpdate;
-                          this.setState({
-                              activity
-                          })
+                         //  let activityId = res.data.id;
+                         //  const activity = [...this.state.activity];
+                         //  const activityEdit = activity.findIndex(actividad => activityId === actividad.id );
+                         //  activity[activityEdit] = activityUpdate;
+                         //  this.setState({
+                         //      activity
+                         //  })
                       }
                   }).catch(console.log)
           }
@@ -123,23 +97,23 @@ const{ curriculumactivity,
                               </div>
                                  
                                    <div className="form-group">                                  <label>Titulo Actividad:</label>
-                                        <input onChange={this.onChangeInput} type="text" name="curriculumactivity" defaultValue={curriculumactivity} className="form-control" />
+                                        <input onChange={this.onChangeInput} type="text" name="curriculumactivity" value={this.state.curriculumactivity} className="form-control" />
                                    </div>
                                    <div className="form-group">
                                         <label>Encargado:</label>
-                                        <input onChange={this.onChangeInput} type="text" name="manager" value={manager}     className="form-control" />
+                                        <input onChange={this.onChangeInput} type="text" name="manager" defaultValue={this.state.activity.manager}     className="form-control" />
                                    </div>
                                    <div className="form-group">
                                         <label>Fecha :</label>
-                                        <input onChange={this.onChangeInput} type="text" name="date" defaultValue={date} className="form-control" />
+                                        <input onChange={this.onChangeInput} type="text" name="date" defaultValue={this.state.activity.date} className="form-control" />
                                    </div>
                                    <div className="form-group">
                                         <label> Hora:</label>
-                                        <input onChange={this.onChangeInput} type="text" name="hour" defaultValue={hour}  className="form-control" />
+                                        <input onChange={this.onChangeInput} type="text" name="hour" defaultValue={this.state.activity.hour}  className="form-control" />
                                    </div>
                                    <div className="form-group">
                                         <label> Descripción:</label>
-                                        <input onChange={this.onChangeInput} type="text" name="description" defaultValue={description} className="form-control" />
+                                        <input onChange={this.onChangeInput} type="text" name="description" defaultValue={this.state.activity.description} className="form-control" />
                                    </div>
                                    <div className="form-group">
                                         <label> Prioridad:</label>
