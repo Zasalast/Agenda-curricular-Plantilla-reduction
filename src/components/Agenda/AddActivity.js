@@ -103,21 +103,16 @@ const priorities = [
                          <label>Descripcion: </label>
                          <textarea onChange={this.onChangeInput} className="form-control" name="description" value={this.state.description} placeholder="Descripcion..."></textarea>
                     </div>
-                    {/* <div className="form-group"> */}
+                     
                     <label>Prioridad: </label>
 
-                    {/*  <select className="form-control">
-                                <priorities onChange={this.onChangeInput} name="priority" className="form-control" value={this.state.priority}/>>
-                            </select> */}
                     <Select onChange={this.onChangePrority} name="priority" options={priorities} value={this.state.priority} />
-                    {/*     </div> */}
-                    {/* <div className="form-group"> */}
+                  
                     <label>Estado: </label>
-                    {/*    <select className="form-control"> 
-                         </select> */}
+                 
                     <Select onChange={this.onChangeState} name="state" options={staties} value={this.state.state} />
 
-                    {/*  </div> */}
+                   
                     <div className="form-group">
                          <button onClick={() => this.createActivity()} className="btn btn-primary">Crear</button>
                          <ToastContainer />

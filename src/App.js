@@ -124,7 +124,7 @@ class App extends React.Component {
                 <Route exact path="/modals" component={ModalPage} />
                 <Route exact path="/agregaractividad" component={AddActivity} />
 
-                <Route exact path="/editactividad" component={EditActivity} />
+                <Route exact path="/editactivity" component={EditActivity} />
                 <Route exact path="/forms" component={FormPage} />
                 <Route exact path="/input-groups" component={InputGroupPage} />
                 {/*  <Route exact path="/charts" component={ChartPage} /> */}
