@@ -27,3 +27,5 @@ If you want more premium or free React Bootstrap themes, you can get it [here](h
 [![Flat Logic](public/img/screenshots/flatlogic.com_admin-dashboards_react.png)](https://flatlogic.com/admin-dashboards?ref=w7yTz44arn)
 "# Agenda-curricular-Plantilla-reduction" 
 # Agenda-curricular-Plantilla-reduction
+
+It is an agenda to keep track of the activities to be carried out, delivery times and priority level, in the same way as those in charge of it
